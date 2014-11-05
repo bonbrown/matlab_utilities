@@ -16,3 +16,8 @@ Reads WRF NetCDF output at a at a given time index and extracts a 2D field inter
 the height (in m) of your choosing given a file path and name, variable name, time index, and height. 
 Detects if a field is staggered and unstaggers it to mass points. For use with "new" MATLAB NetCDF libraries, 
 tested on version R2014a.
+
+RADAR UTILITIES
+
+get_cfradial_filenames.m
+cfrad NetCDF files have names based on unevenly spaced time intervals. This reads those names from a text file created by a short python script of my creation. For opening cfrad files in MATLAB.
