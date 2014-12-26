@@ -1,4 +1,4 @@
-function [varh] = read_wrf_height(pth,fl,vnam,ti,hgt) 
+function [varh] = read_wrf_height(pth,fl,vnam,ti,hgt,altvarfl) 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % read_wrf_height.m                                                       
@@ -11,6 +11,10 @@ function [varh] = read_wrf_height(pth,fl,vnam,ti,hgt)
 %           vnam - variable name (string)
 %           ti   - time index (integer)
 %           hgt  - desired height level in meters (float)
+%           altvarfl - alternative filename to source variable of interest
+%               from. Still takes height, dimension info from pth+fl, must have same
+%               dimensions (for dual pol simulations). Input [], '', or other
+%               dummy of length < 2 to bypass (string)
 %
 % outputs:  varh - the variable field (unstaggered to mass pts) 
 %                   interpolated to desired height level (X x Y matrix)
@@ -29,7 +33,11 @@ level = hgt;
 % west-east by south-north by eta by time.
 
 % get variable at desired time index
-dat = ncread(ncfile,vnam,[1 1 1 ti],[inf inf inf 1]);
+if length(altvarfl) > 2
+    dat = ncread(altvarfl,vnam,[1 1 1 ti],[inf inf inf 1]);
+else
+    dat = ncread(ncfile,vnam,[1 1 1 ti],[inf inf inf 1]);
+end
 [we,sn,neta,t] = size(dat);
 
 % get size of unstaggered grid

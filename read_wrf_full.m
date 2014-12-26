@@ -1,4 +1,4 @@
-function [field] = read_wrf_full(pth,fl,vnam,ti,int)
+function [field] = read_wrf_full(pth,fl,vnam,ti,int,altvarfl)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -15,7 +15,12 @@ function [field] = read_wrf_full(pth,fl,vnam,ti,int)
 ncfile = strcat(pth,fl);
 
 % get variable at desired times
-dat = ncread(ncfile,vnam,[1 1 1 ti],[inf inf inf int]);
+% get variable at desired time index
+if length(altvarfl) > 2
+    dat = ncread(altvarfl,vnam,[1 1 1 ti],[inf inf inf int]);
+else
+    dat = ncread(ncfile,vnam,[1 1 1 ti],[inf inf inf int]);
+end
 [we,sn,neta] = size(dat);
 
 % get size of unstaggered grid
