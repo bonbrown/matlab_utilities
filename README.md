@@ -22,6 +22,18 @@ RADAR UTILITIES
 get_cfradial_filenames.m
 cfrad NetCDF files have names based on unevenly spaced time intervals. This reads those names from a text file created by a short python script of my creation. For opening cfrad files in MATLAB.
 
+radar_pdf.m
+Create a joint frequency distribution of horizontal reflectivity and differential reflectivity over a time and height region. Reads radar or WRF output. Normalization options. This hasn't been cleaned up for user-friendliness.
+
+cfad.m
+Create a contoured frequency by altitude diagram (CFAD) of chosen variable. Reads radar or WRF output. Normalization options. This hasn't been cleaned up for user-friendliness.
+
+radar_mosaic.m
+Combines data from more than one radar - takes the data with the highest reflectivity at each pixel to create a composite over area covered by at least one radar. Some hard-coded file reading sections will have to be modified.
+
+conv_stratiform_partition.m
+Convective stratiform partition based on reflectivity. For looping over multiple times, creates a separate netCDF file for output.
+
 METEOROLGY UTILITIES
 
 equiv_theta.m
