@@ -21,3 +21,18 @@ RADAR UTILITIES
 
 get_cfradial_filenames.m
 cfrad NetCDF files have names based on unevenly spaced time intervals. This reads those names from a text file created by a short python script of my creation. For opening cfrad files in MATLAB.
+
+METEOROLGY UTILITIES
+
+equiv_theta.m
+calculate equivalent potential temperature from potential temperature, pressure, water vapor mixing ratio.
+
+CM1 UTILITIES
+
+read_cm1_traj.m
+read trajectories from CM1
+
+read_cm1r17.m
+
+read standard output from CM1 release 17
+
